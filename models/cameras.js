@@ -35,8 +35,8 @@ class Cameras {
             if(erro) {
                 console.log(erro)
             } else {
-                res.send(resultados)
                 console.log(resultados)
+                res.send(resultados)
             }
         } )
     }

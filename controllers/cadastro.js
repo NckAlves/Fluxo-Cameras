@@ -61,13 +61,13 @@ module.exports = app => {
         Cameras.adicionarCamera(camera)
         res.send('POST nas cameras')
     })
-    app.patch('./cameras/:id', (req, res) => {
+    app.patch('/cameras/:id', (req, res) => {
         const id = parseInt(req.params.id)
         const valores = req.body
 
         Cameras.alterarCamera(id, valores, res)
     })
-    app.delete('./cameras/:id', (req, res) => {
+    app.delete('/cameras/:id', (req, res) => {
         const id = parseInt(req.params.id)
 
         Cameras.deletarCamera(id, res)
