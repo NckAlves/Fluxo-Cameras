@@ -22,7 +22,7 @@ class Cameras {
             if(erro){
                 console.log(erro)
             } else {
-                res.send(resultados)
+                res.send(resultados).json()
                 console.log(resultados)
             }
         })
@@ -42,12 +42,13 @@ class Cameras {
     }
 
     deletarCamera(id, res) {
-        const sql = 'DELETE FRROM cameras WHERE id=?'
+        const sql = 'DELETE FROM cameras WHERE id=?'
 
-        conexao.query(sql, (erro, resultados) => {
+        conexao.query(sql, id, (erro, resultados) => {
             if(erro) {
                 console.log(erro)
             } else {
+                console.log(resultados)
                 res.send(resultados)
             }
         })

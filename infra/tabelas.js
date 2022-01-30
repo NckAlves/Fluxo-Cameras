@@ -31,7 +31,7 @@ class Tabelas {
     }
 
     criarCamera() {
-        const sql = 'CREATE TABLE IF NOT EXISTS cameras (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, IP varchar(16), user varchar(20), senha varchar(20), modelo varchar(30), data_instalacao date, id_estabelecimento int, CONSTRAINT fk_CamEstabelecimento FOREIGN KEY (id_estabelecimento) REFERENCES estabelecimentos (id))'
+        const sql = 'CREATE TABLE IF NOT EXISTS cameras (id int PRIMARY KEY NOT NULL AUTO_INCREMENT, IP varchar(16), user varchar(20), senha varchar(20), modelo varchar(30), data_instalacao date, data_contagem date, contagem int, id_estabelecimento int, CONSTRAINT fk_CamEstabelecimento FOREIGN KEY (id_estabelecimento) REFERENCES estabelecimentos (id))'
         
         this.conexao.query(sql, erro => {
             if(erro) {

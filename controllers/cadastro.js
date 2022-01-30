@@ -14,9 +14,19 @@ module.exports = app => {
         const gerente = req.body
 
         Gerentes.adicionarGerente(gerente)
-        res.send('POST nos gerentes')}
-        )
+        res.send('POST nos gerentes')
+    })
+    app.patch('/gerentes/:id', (req, res) => {
+        const id = parseInt(req.params.id)
+        const valores = req.body
 
+        Gerentes.alterarGerente(id, valores, res)
+    })
+    app.delete('/gerentes/:id', (req, res) => {
+        const id = parseInt(req.params.id)
+
+        Gerentes.deletarGerente(id, res)
+    })
 
     //CRUD Estabelecimentos
     app.get('/estabelecimentos', (req, res) => {
@@ -27,6 +37,17 @@ module.exports = app => {
 
         Estabelecimentos.adicionarEstabelecimento(estabelecimento)
         res.send('POST nos estabelecimentos')
+    })
+    app.patch('/estabelecimentos/:id', (req, res) => {
+        const id = (req.params.id)
+        const valores = req.body
+
+        Estabelecimentos.alterarEstabelecimento(id, valores, res)
+    })
+    app.delete('/estabelecimentos/:id', (req, res) => {
+        const id = parseInt(req.params.id)
+
+        Estabelecimentos.deletarEstabelecimento(id, res)
     })
 
 
@@ -41,7 +62,7 @@ module.exports = app => {
         res.send('POST nas cameras')
     })
     app.patch('./cameras/:id', (req, res) => {
-        const id = parseInt(req.query)
+        const id = parseInt(req.params.id)
         const valores = req.body
 
         Cameras.alterarCamera(id, valores, res)
@@ -49,6 +70,6 @@ module.exports = app => {
     app.delete('./cameras/:id', (req, res) => {
         const id = parseInt(req.params.id)
 
-        Cameras.deletarCamera(id)
+        Cameras.deletarCamera(id, res)
     })
 }
